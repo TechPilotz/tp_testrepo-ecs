@@ -15,7 +15,7 @@ RUN apk add curl
 VOLUME /tmp
 EXPOSE 8080
 
-# Copy the built JAR matching your exact pom.xml finalName configuration
-COPY --from=build /app/target/springboot-aws-deploy-service.jar springboot-aws-deploy-service.jar
+# Copy the built JAR using the standard production naming convention
+COPY --from=build /app/target/springboot-aws-deploy.jar springboot-aws-deploy.jar
 
-ENTRYPOINT ["java","-jar","/springboot-aws-deploy-service.jar"]
+ENTRYPOINT ["java","-jar","/springboot-aws-deploy.jar"]
